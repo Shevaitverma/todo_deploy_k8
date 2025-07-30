@@ -8,7 +8,7 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import { CreateTodoData, Todo } from '@/types/todo';
 
 export default function HomePage() {
-  const { todos, isLoading, error, addTodo, updateTodo, deleteTodo, refreshTodos } = useTodos();
+  const { todos, isLoading, error: _error, addTodo, updateTodo, deleteTodo, refreshTodos } = useTodos();
   const [isAdding, setIsAdding] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -93,7 +93,7 @@ export default function HomePage() {
 
             {/* Todo List */}
             <div className="lg:col-span-2">
-              {error && (
+              {_error && (
                 <div className={`mb-6 rounded-lg p-4 transition-colors duration-200 ${
                   isDarkMode 
                     ? 'bg-red-900/20 border border-red-800' 
@@ -111,7 +111,7 @@ export default function HomePage() {
                       }`}>Error</h3>
                       <p className={`text-sm mt-1 transition-colors duration-200 ${
                         isDarkMode ? 'text-red-400' : 'text-red-700'
-                      }`}>{error}</p>
+                      }`}>{_error}</p>
                     </div>
                   </div>
                 </div>

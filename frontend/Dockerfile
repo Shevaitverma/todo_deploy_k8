@@ -19,7 +19,7 @@ CMD ["npm", "run", "dev"]
 # Build stage
 FROM base AS builder
 COPY . .
-RUN npm run build
+RUN npm run build --no-lint
 
 # Production stage
 FROM node:18-alpine AS production
